@@ -1,0 +1,9 @@
+<app-currency-picker [symbol]="symbol" (ccySelected)="onChange($event)"></app-currency-picker>
+<div class="close" (click)="onRemove(symbol)">-</div>
+<input class="notional" type="number" [(ngModel)]="amount" placeholder="notional" name="notional"
+  value="amount | number: '1.0-0'">
+<div class="price-tile-quotes">
+  <app-price-quote (buySellClick)="postTransaction($event)" [side]="'Buy'" [price]="bidRate"></app-price-quote>
+  <app-price-quote (buySellClick)="postTransaction($event)" [side]="'Sell'" [price]=" termRate"></app-price-quote>
+</div>
+<div>{{statusBar}}</div>

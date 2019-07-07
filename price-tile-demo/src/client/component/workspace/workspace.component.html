@@ -1,0 +1,10 @@
+<div class="price-tiles">
+  <app-price-tile *ngFor="let priceTile of layoutConfig" [symbol]=priceTile.symbol class="price-tile"
+    (ccySelected)="onCcySelected(priceTile, $event)" (ccyRemove)="onCcyRemove(priceTile, $event)">
+  </app-price-tile>
+  <span class="add" (click)="onAdd($event)">+</span>
+</div>
+
+<div class="blotter">
+  <app-transaction-grid></app-transaction-grid>
+</div>

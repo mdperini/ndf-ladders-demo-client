@@ -1,0 +1,106 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~ag-grid-community/dist/styles/ag-grid.css";
+@import "~ag-grid-community/dist/styles/ag-theme-balham.css";
+/* @import "../node_modules/ag-grid-community/src/styles/ag-grid.scss"; */
+/* @import "../node_modules/ag-grid-community/src/styles/ag-theme-balham/sass/ag-theme-balham.scss"; */
+
+body {
+  --odd-row-background-color: #CFD8DC;
+  background: #000000;
+  color: white;
+  font-family: Arial, Helvetica, blottersans-serif;
+}
+
+
+.price-tile {
+  border: solid blue 1px;
+  padding: 5px;
+  width: 300px;
+  position: relative;
+}
+
+
+.price-tiles {
+  display: flex;
+  /* or inline-flex */
+  flex-wrap: wrap;
+}
+
+.price-tile-quotes {
+  display: flex;
+  justify-content: space-between;
+}
+
+app-price-quote {
+  width: 140px;
+}
+
+select {
+  margin-bottom: 5px;
+  background: #000000;
+  color: white;
+}
+
+.price-tile {
+  margin: 5px;
+}
+
+.notional {
+  text-align: right;
+  background: #000000;
+  color: white;
+  width: calc(100% - 5px);
+  margin-bottom: 5px;
+}
+
+.currency-picker {
+  cursor: pointer;
+}
+
+.notional {
+  cursor: pointer;
+}
+
+.refresh {
+  background: transparent;
+  color: white;
+  text-align: left;
+  letter-spacing: 10px;
+  cursor: pointer;
+  border: solid blue 1px;
+  width: 100vw;
+}
+
+app-price-quote {
+  cursor: pointer;
+  border: solid blue 1px;
+  justify-content: space-between;
+  text-align: center;
+}
+
+app-price-quote .price {
+  display: inline;
+}
+
+
+.add {
+  cursor: pointer;
+}
+
+.close {
+  position: absolute;
+  right: 10px;
+  top: 0;
+  color: lightcoral;
+}
+
+.blotter {
+  margin: 5px;
+
+
+}
+
+ag-grid-angular {
+  height: 100vh;
+  width: 100vw;
+}
