@@ -4,8 +4,7 @@ import { TransactionService } from 'src/client/services/transaction.service';
 
 @Component({
   selector: 'app-transaction-grid',
-  templateUrl: './transaction-grid.component.html',
-  styleUrls: ['./transaction-grid.component.css']
+  templateUrl: './transaction-grid.component.html'
 })
 export class TransactionGridComponent implements OnInit {
   columnDefs = [

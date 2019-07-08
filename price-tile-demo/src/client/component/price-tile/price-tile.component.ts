@@ -12,8 +12,7 @@ import { TransactionService } from 'src/client/services/transaction.service';
 
 @Component({
   selector: 'app-price-tile',
-  templateUrl: './price-tile.component.html',
-  styleUrls: ['./price-tile.component.css']
+  templateUrl: './price-tile.component.html'
 })
 export class PriceTileComponent implements OnInit, OnChanges {
   @Input() symbol: string;

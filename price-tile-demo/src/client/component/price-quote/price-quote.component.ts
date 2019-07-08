@@ -2,8 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-price-quote',
-  templateUrl: './price-quote.component.html',
-  styleUrls: ['./price-quote.component.css']
+  templateUrl: './price-quote.component.html'
 })
 export class PriceQuoteComponent implements OnInit {
   @Input() side: string;

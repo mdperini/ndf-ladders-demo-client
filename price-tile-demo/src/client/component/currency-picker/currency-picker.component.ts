@@ -3,8 +3,7 @@ import { StaticDataService } from 'src/client/services/static-data.service';
 
 @Component({
   selector: 'app-currency-picker',
-  templateUrl: './currency-picker.component.html',
-  styleUrls: ['./currency-picker.component.css']
+  templateUrl: './currency-picker.component.html'
 })
 export class CurrencyPickerComponent implements OnInit {
   @Input() symbol: string;

@@ -3,8 +3,7 @@ import { UserPreferenceService } from '../../services/user-preference.service';
 import { THROW_IF_NOT_FOUND } from '@angular/core/src/di/injector';
 @Component({
   selector: 'app-workspace',
-  templateUrl: './workspace.component.html',
-  styleUrls: ['./workspace.component.css']
+  templateUrl: './workspace.component.html'
 })
 export class WorkspaceComponent implements OnInit {
   layoutConfig = [];
