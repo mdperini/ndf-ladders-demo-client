@@ -4,13 +4,52 @@
 /* @import "../node_modules/ag-grid-community/src/styles/ag-grid.scss"; */
 /* @import "../node_modules/ag-grid-community/src/styles/ag-theme-balham/sass/ag-theme-balham.scss"; */
 
+.navbar-header {
+  float: left;
+}
+
+.velocity-icon {
+  float: left;
+  background-repeat: no-repeat;
+}
+
+.vi-chevron {
+  margin-left: 5px;
+  margin-top: 6px;
+  width: 17px;
+  height: 11px;
+}
+
+.vi-chevron {
+  width: 17px;
+  height: 11px;
+  background-image: url("data:image/svg+xml;utf8, \
+  <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 19'> \
+      <path fill='red' d='M 0.37,0 C0.37,0 13.83,0 13.83,0 13.83,0 30,9.57 30,9.57 30,9.57 13.60,19 13.60,19 13.60,19 0,19 0,19 0,19 16.01,9.50 16.01,9.50 16.01,9.50 0.37,0 0.37,0 z'/> \
+  </svg>");
+}
+
+.vi-chevron {
+  width: 30px;
+  height: 20px;
+}
+
+select {
+  margin-left: 4px;
+  left: 130px;
+  width: 120px;
+  height: 30px;
+  border: 1 solid #777777 30%;
+  font-size: 120%;
+  font-weight: 600;
+}
+
 body {
   --odd-row-background-color: #CFD8DC;
   background: #000000;
   color: white;
   font-family: Arial, Helvetica, blottersans-serif;
 }
-
 
 .price-tile {
   border: solid blue 1px;
@@ -19,10 +58,31 @@ body {
   position: relative;
 }
 
+span {
+  padding: 0 2px;
+}
+
+.price-tile-amount {
+  font-size: 16px;
+  vertical-align: top;
+}
+
+.price-tile-amount-tick {
+  font-size: 48px;
+  font-weight: bold;
+}
+
+.down {
+  color: red;
+}
+
+.up {
+  color: green;
+}
 
 .price-tiles {
   display: flex;
-  /* or inline-flex */
+ /* or inline-flex */
   flex-wrap: wrap;
 }
 
@@ -32,13 +92,16 @@ body {
 }
 
 app-price-quote {
-  width: 140px;
+  color: #DCDCDC;
+  font-size: 76%;
+  width: 144px;
 }
 
 select {
   margin-bottom: 5px;
   background: #000000;
   color: white;
+  border: solid #696969 1px;
 }
 
 .price-tile {
@@ -48,9 +111,12 @@ select {
 .notional {
   text-align: right;
   background: #000000;
-  color: white;
+  color: #DCDCDC;
   width: calc(100% - 5px);
   margin-bottom: 5px;
+  font-size: 100%;
+  font-weight: 600;
+  border: solid #696969 1px;
 }
 
 .currency-picker {
@@ -73,7 +139,7 @@ select {
 
 app-price-quote {
   cursor: pointer;
-  border: solid blue 1px;
+  border: solid #696969 1px;
   justify-content: space-between;
   text-align: center;
 }
@@ -82,12 +148,15 @@ app-price-quote .price {
   display: inline;
 }
 
-
 .add {
   cursor: pointer;
+  height: 132px;
+  width: 132px;
+  top: 10px;
 }
 
 .close {
+  cursor: pointer;
   position: absolute;
   right: 10px;
   top: 0;
@@ -96,7 +165,6 @@ app-price-quote .price {
 
 .blotter {
   margin: 5px;
-
 
 }
 

@@ -1,4 +1,6 @@
-<div hidden>{{symbol}}</div>
+<div class="navbar-header">
+  <div class="velocity-icon vi-chevron"></div>
+</div>
 <select class="currency-picker " id="currency-select" (change)="onChange($event.target.value)">
-  <option *ngFor="let ccy of ccyPairs" [value]="ccy.symbol" [selected]="ccy.symbol === symbol">{{ccy.symbol}}</option>
+  <option *ngFor="let ccy of ccyPairs" [value]="ccy.symbol" [selected]="ccy.symbol === symbol">{{formatSymbol(ccy.symbol)}}</option>
 </select>

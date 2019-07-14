@@ -16,6 +16,10 @@ import { StaticDataService } from './services/static-data.service';
 
 import { AgGridModule } from 'ag-grid-angular';
 
+import { DatePipe, DecimalPipe } from '@angular/common';
+
+import { PricePipe } from './formatprice.pipe';
+
 export function loadstaticData(staticDataService: StaticDataService) {
   return () => {
     return staticDataService.getCCY();
@@ -29,7 +33,8 @@ export function loadstaticData(staticDataService: StaticDataService) {
     PriceTileComponent,
     PriceQuoteComponent,
     WorkspaceComponent,
-    TransactionGridComponent
+    TransactionGridComponent,
+    PricePipe
   ],
   imports: [
     BrowserModule,
@@ -37,8 +42,11 @@ export function loadstaticData(staticDataService: StaticDataService) {
     HttpClientModule,
     FormsModule,
     AgGridModule.withComponents([])
+   
   ],
   providers: [
+    DatePipe,
+    DecimalPipe,
     {
       provide: APP_INITIALIZER,
       useFactory: loadstaticData,

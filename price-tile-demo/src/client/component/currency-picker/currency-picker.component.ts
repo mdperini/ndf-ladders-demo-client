@@ -22,4 +22,8 @@ export class CurrencyPickerComponent implements OnInit {
   onChange(newValue) {
     this.ccySelected.emit(newValue);
   }
+
+  formatSymbol(symbol: string) {
+    return `${symbol.substring(0, 3)}/${symbol.substring(3, 6)}`;
+  }
 }

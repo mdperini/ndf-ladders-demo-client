@@ -1,6 +1,13 @@
 <div>
-  <div (click)="onBuySellClick($event)" class="side">{{side}}</div>
+  <div (click)="onBuySellClick($event)" class="side">{{display}}</div>
   <div class="price">
-    <span>{{price}}</span>
+    <span class="price-tile-amount" [ngClass]="marketDirection"> {{getCurrentPrice('buy', 0, 4)}}</span>
+    <span class="price-tile-amount-tick" [ngClass]="marketDirection">
+      {{getCurrentPrice('buy', 4, 6)}}
+    </span>
+    <span  class="price-tile-amount" [ngClass]="marketDirection">
+      {{getCurrentPrice('buy', 6, 7)}}
+    </span>
   </div>
+  <!-- <div class="price">{{price | formatPrice}}</div> -->
 </div>

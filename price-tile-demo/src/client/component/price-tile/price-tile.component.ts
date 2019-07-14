@@ -69,3 +69,4 @@ export class PriceTileComponent implements OnInit, OnChanges {
     this.ccyRemove.emit(value);
   }
 }
+
