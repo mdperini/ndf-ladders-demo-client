@@ -24,11 +24,11 @@ export class PricingService {
 
   getLivePrices(symbol) {
     const subject = new Subject();
-
+    console.log('getLivePrices', symbol);
+   
     this.connect().then(() => {
       const handler = (update, flags) => {
-        // console.log('price', update);
-
+        // console.log('getLivePrices', JSON.stringify(update));
         subject.next(update);
       };
       this.client.subscribe('/price/' + symbol, handler);

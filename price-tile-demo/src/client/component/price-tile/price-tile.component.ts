@@ -16,6 +16,7 @@ import { TransactionService } from 'src/client/services/transaction.service';
 })
 export class PriceTileComponent implements OnInit, OnChanges {
   @Input() symbol: string;
+  @Output() ccySelected = new EventEmitter<any>();
   @Output() ccyRemove = new EventEmitter<any>();
   subscription: Subscription;
 
@@ -42,27 +43,28 @@ export class PriceTileComponent implements OnInit, OnChanges {
     this.subscription = this.pricingService
       .getLivePrices(this.symbol)
       .subscribe((x: any) => {
+       console.log(`x.symbol ${x.symbol} ${this.symbol}`); 
         this.bidRate = x.bidRate.toFixed(5);
         this.termRate = x.termRate.toFixed(5);
       });
-  }
+     }
 
-  onChange(newValue) {
-    this.symbol = newValue;
-  }
 
   postTransaction(side) {
     const result = this.transactionService
       .postTransaction(this.symbol, side, this.amount)
       .subscribe(
         (res) => {
-          this.statusBar = "success!";
           console.log(`res ${JSON.stringify(res)}`);
         },
         (err) => {
           console.log(err);
         }
       );
+  }
+
+  onSelected($event) {
+    this.ccySelected.emit($event);
   }
 
   onRemove(value) {

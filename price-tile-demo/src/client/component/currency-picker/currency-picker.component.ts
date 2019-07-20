@@ -19,7 +19,8 @@ export class CurrencyPickerComponent implements OnInit {
     });
   }
 
-  onChange(newValue) {
+  onSelected(newValue) {
+    console.log(`ccy picker onSelected ${newValue}`);
     this.ccySelected.emit(newValue);
   }
 

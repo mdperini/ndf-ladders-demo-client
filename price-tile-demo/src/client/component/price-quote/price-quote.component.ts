@@ -8,7 +8,7 @@ export class PriceQuoteComponent implements OnInit, OnChanges {
   @Input() display: string;
   @Input() side: string;
   @Input() price: number;
-  @Output() buySellClick = new EventEmitter<string>();
+  @Output() execute = new EventEmitter<string>();
   prevPrice: number;
   marketDirection: string;
   constructor() {}
@@ -21,9 +21,8 @@ export class PriceQuoteComponent implements OnInit, OnChanges {
       this.prevPrice = this.price;
     }
   }
-
-  onBuySellClick($event) {
-    this.buySellClick.emit(this.side);
+  onClick($event) {
+    this.execute.next(this.side);
   }
 
   getCurrentPrice(direction: string, from: number, to: number) {
