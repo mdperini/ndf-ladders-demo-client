@@ -14,7 +14,7 @@
 }
 
 .vi-chevron {
-  margin-left: 5px;
+  margin-left: 1px;
   margin-top: 6px;
   width: 17px;
   height: 11px;
@@ -112,7 +112,7 @@ select {
   text-align: right;
   background: #000000;
   color: #DCDCDC;
-  width: calc(100% - 5px);
+  width: calc(100% - 2px);
   margin-bottom: 5px;
   font-size: 100%;
   font-weight: 600;
@@ -121,10 +121,19 @@ select {
 
 .currency-picker {
   cursor: pointer;
+  width: calc(100% - 50px);
+}
+
+.currency-picker:hover {
+  border: solid blue 1px;
 }
 
 .notional {
   cursor: pointer;
+}
+
+.notional:hover {
+  border: solid blue 1px;
 }
 
 .refresh {
@@ -144,6 +153,12 @@ app-price-quote {
   text-align: center;
 }
 
+
+app-price-quote:hover {
+  border: solid blue 1px;
+  background: linear-gradient(black, blue);
+}
+
 app-price-quote .price {
   display: inline;
 }
@@ -157,18 +172,22 @@ app-price-quote .price {
   color: green; 
 }
 
+.add-inner:hover {
+  color: blue;  
+}
+
+
 .close {
   cursor: pointer;
-  padding: 1px 4px;
+  padding: 4px;
   position: absolute;
-  right: 10px;
-  top: 0;
+  right: 1px;
+  top: 10px;
   color: lightcoral;
 }
 
 .close:hover {
-  background-color: darkblue;
-  border: solid lightcoral 1px;
+  color:blue;
 }
 
 .blotter {
@@ -189,7 +208,7 @@ ag-grid-angular {
 }
 .ag-row-hover {
    /* putting in !important so it overrides the theme's styling as it hovers the row also */
-   background-color: midnightblue;
+   background-color: blue;
 }
 /* .ag-column-hover {
    background-color: orangered;
