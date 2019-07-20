@@ -7,7 +7,7 @@ import {
   OnChanges, 
   OnDestroy
 } from '@angular/core';
-import { Subject, Subscription } from 'rxjs';
+import { Subscription } from 'rxjs';
 import { PricingService } from 'src/client/services/pricing.service';
 import { TransactionService } from 'src/client/services/transaction.service';
 
@@ -57,9 +57,9 @@ export class PriceTileComponent implements OnInit, OnChanges, OnDestroy {
     this.priceSubscription = this.pricingService
       .getLivePrices(this.symbol)
       .subscribe((x: any) => {
-       console.log(`x.symbol ${x.symbol} ${this.symbol}`);
        this.bidRate = x.bidRate.toFixed(5);
        this.termRate = x.termRate.toFixed(5);
+       console.log(`quote ${x.symbol} ${this.symbol} ${this.bidRate} ${this.termRate} `);
       });
   }
 
@@ -69,6 +69,7 @@ export class PriceTileComponent implements OnInit, OnChanges, OnDestroy {
       .subscribe(
         (res) => {
           console.log(`res ${JSON.stringify(res)}`);
+          this.transactionService.OnNext();
         },
         (err) => {
           console.log(err);

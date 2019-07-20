@@ -3,13 +3,25 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 
+import { Observable, Subject, Subscription } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
 export class TransactionService {
   readonly serverUrl = environment.serverUrl + '/transactions';
+  executedOrder: Subject<boolean>;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+    this.executedOrder = new Subject();
+  }
+
+  getOrderSubject(): Subject<boolean> {
+    return this.executedOrder;
+  }
+
+  OnNext() {
+    this.executedOrder.next(true);
+  }
 
   getTransactions() {
     return new Promise((resolve) => {

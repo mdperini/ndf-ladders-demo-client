@@ -149,23 +149,30 @@ app-price-quote .price {
 }
 
 .add {
-  cursor: pointer;
-  height: 132px;
-  width: 132px;
-  top: 10px;
+  cursor: pointer; 
+}
+
+.add-inner {
+  margin: 30px;
+  color: green; 
 }
 
 .close {
   cursor: pointer;
+  padding: 1px 4px;
   position: absolute;
   right: 10px;
   top: 0;
   color: lightcoral;
 }
 
+.close:hover {
+  background-color: darkblue;
+  border: solid lightcoral 1px;
+}
+
 .blotter {
   margin: 5px;
-
 }
 
 ag-grid-angular {

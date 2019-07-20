@@ -1,16 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { TransactionService } from 'src/client/services/transaction.service';
 import { CurrencyPipe, DatePipe, DecimalPipe } from '@angular/common';
 import { ColDef } from 'ag-grid-community';
-import { BuiltinType } from '@angular/compiler';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-transaction-grid',
   templateUrl: './transaction-grid.component.html'
 })
-export class TransactionGridComponent implements OnInit {
+export class TransactionGridComponent implements OnInit, OnDestroy {
   columnDefs: ColDef[];
   defaultColDef: any;
+  refreshSubscription: Subscription;
 
   rowData: any;
   columnDefinitions = [
@@ -52,6 +53,16 @@ export class TransactionGridComponent implements OnInit {
   ngOnInit() {
     this.setColumns(this.columnDefinitions);
     this.getTransactions();
+    this.refreshSubscription = this.transactionService.getOrderSubject()
+    .subscribe(() => {
+      this.getTransactions();
+    });
+  }
+
+  ngOnDestroy() {
+    if (this.refreshSubscription) {
+      this.refreshSubscription.unsubscribe();
+    }
   }
 
   private getTransactions() {
@@ -59,11 +70,6 @@ export class TransactionGridComponent implements OnInit {
       this.rowData = result;
     });
   }
-
-  onClickRefresh() {
-    this.getTransactions();
-  }
-
 
   setColumns(columns: any[]) {
     this.columnDefs = [];
@@ -76,7 +82,7 @@ export class TransactionGridComponent implements OnInit {
         definition.cellClassRules = {
           'rag-green': 'x == "BUY"',
           'rag-red': 'x == "SELL"'
-        }; 
+        };
       } else  if (column.type === 'date') {
         definition.valueFormatter = (data) =>
         this.dateFormatter.transform(data.value, 'MMM dd yyyy hh:mm:ss');
@@ -94,8 +100,7 @@ export class TransactionGridComponent implements OnInit {
         sortable: true,
         // all columns resizable
         resizable: true,
-        /* Group columns */
-        
+
         rowSelection: 'single'
       };
     });
