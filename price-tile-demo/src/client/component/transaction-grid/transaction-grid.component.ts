@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { TransactionService } from 'src/client/services/transaction.service';
-import { DatePipe, DecimalPipe } from '@angular/common';
+import { CurrencyPipe, DatePipe, DecimalPipe } from '@angular/common';
 import { ColDef } from 'ag-grid-community';
+import { BuiltinType } from '@angular/compiler';
 
 @Component({
   selector: 'app-transaction-grid',
@@ -10,48 +10,47 @@ import { ColDef } from 'ag-grid-community';
 })
 export class TransactionGridComponent implements OnInit {
   columnDefs: ColDef[];
-  // rowData = [
-  //   { 'car': 'Audi', 'releaseDate': '2018-01-04', 'price': 99000 },
-  //   { 'car': 'Tesla', 'releaseDate': '2020-03-01', 'price': 49000 },
-  //   { 'bus': 'MAN', 'releaseDate': '2015-02-02', 'price': 1234500 },
-  //   { 'bus': 'Volvo', 'releaseDate': '2016-06-03', 'price': 2234500 }
-  // ];
+  defaultColDef: any;
 
-  // columnDefs = [
-  //   { headerName: 'Symbol', field: 'symbol', sortable: true },
-  //   { headerName: 'Type', field: 'priceType' },
-  //   { headerName: 'Amount', field: 'amount', sortable: true },
-  //   { headerName: 'Side', field: 'side', sortable: true },
-  //   { headerName: 'Date', field: 'date', dateFormatter: },
-  //   { headerName: 'Rate', field: 'rate' }
-  // ];
+  rowData: any;
+  columnDefinitions = [
+    {
+      header: 'Symbol',
+      name: 'symbol',
+    },
+    {
+      header: 'Type',
+      name: 'priceType'
+    },
+    {
+      header: 'Side',
+      name: 'side'
+    },
+    {
+      header: 'Notional',
+      name: 'amount',
+      type: 'currency'
+    },
+    {
+      header: 'Rate',
+      name: 'rate',
+      type: 'price'
+    },
+    {
+      header: 'Transaction',
+      name: 'date',
+      type: 'date'
+    }];
 
-  // columnDefs = [
-  //   { headerName: 'Make', field: 'make', sortable: true, filter: true },
-  //   { headerName: 'Model', field: 'model', sortable: true, filter: true },
-  //   { headerName: 'Price', field: 'price', sortable: true, filter: true }
-  // ];
-
-  // rowData = [
-  //   { make: 'Toyota', model: 'Celica', price: 35000 },
-  //   { make: 'Ford', model: 'Mondeo', price: 32000 },
-  //   { make: 'Porsche', model: 'Boxter', price: 72000 }
-  // ];
-
-   rowData: any;
   constructor(
-    private http: HttpClient,
     private transactionService: TransactionService,
     private dateFormatter: DatePipe,
-    private numberFormatter: DecimalPipe
-  ) {
-    const columns = ['symbol', 'priceType', 'side', 'amount',  'rate', 'date'];
-    // const columns = ['car', 'bus', 'releaseDate', 'price'];
-    this.setColumns(columns);
+    private numberFormatter: DecimalPipe,
+    private currencyPipe: CurrencyPipe) {
   }
 
   ngOnInit() {
-    // this.rowData = this.http.get('https://api.myjson.com/bins/15psn9');
+    this.setColumns(this.columnDefinitions);
     this.getTransactions();
   }
 
@@ -65,29 +64,40 @@ export class TransactionGridComponent implements OnInit {
     this.getTransactions();
   }
 
-  setColumns(columns: string[]) {
+
+  setColumns(columns: any[]) {
     this.columnDefs = [];
-    columns.forEach((column: string) => {
-      const definition: ColDef = { headerName: column, field: column, minWidth: 120};
-      if (column === 'symbol') {
-        definition.headerName = 'Symbol';
-      } else if (column === 'priceType') {
-        definition.headerName = 'Order Type';
-      } else if (column === 'side') {
-        definition.headerName = 'Side';
-      } else if (column.endsWith('date')) {
-        definition.headerName = 'Trade Date';
-        definition.valueFormatter = (data) => this.dateFormatter.transform(data.value, 'MMM dd yyyy hh:mm:ss');
-      } else if (column === 'amount') {
-        definition.headerName = 'Dealt Amount';
-        definition.valueFormatter = (data) => this.numberFormatter.transform(data.value, '1.0-2');
-        definition.type = 'numericColumn';
-      } else if (column === 'rate') {
-        definition.headerName = 'Order Rate';
-        definition.valueFormatter = (data) => this.numberFormatter.transform(data.value, '1.2-5');
-        definition.type = 'numericColumn';
+    columns.forEach((column: any) => {
+      // const definition: ColDef = { headerName: column, field: column, minWidth: 120};
+      const definition: ColDef = { minWidth: 120};
+      definition.headerName = column.header;
+      definition.field = column.name;
+      if (column.name === 'side') {
+        definition.cellClassRules = {
+          'rag-green': 'x == "BUY"',
+          'rag-red': 'x == "SELL"'
+        }; 
+      } else  if (column.type === 'date') {
+        definition.valueFormatter = (data) =>
+        this.dateFormatter.transform(data.value, 'MMM dd yyyy hh:mm:ss');
+        definition.sort = 'desc';
+      } else if (column.type === 'currency') {
+        definition.valueFormatter =
+          (data) => this.currencyPipe.transform(data.value );
+      } else if (column.type === 'price') {
+       definition.valueFormatter =
+          (data) => this.numberFormatter.transform(data.value, '1.2-5');
       }
       this.columnDefs.push(definition);
+      this.defaultColDef =  {
+        // all columns sortable
+        sortable: true,
+        // all columns resizable
+        resizable: true,
+        /* Group columns */
+        
+        rowSelection: 'single'
+      };
     });
   }
 }

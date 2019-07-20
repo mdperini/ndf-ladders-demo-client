@@ -16,7 +16,7 @@ import { StaticDataService } from './services/static-data.service';
 
 import { AgGridModule } from 'ag-grid-angular';
 
-import { DatePipe, DecimalPipe } from '@angular/common';
+import { DatePipe, DecimalPipe, CurrencyPipe } from '@angular/common';
 
 import { PricePipe } from './formatprice.pipe';
 
@@ -42,9 +42,9 @@ export function loadstaticData(staticDataService: StaticDataService) {
     HttpClientModule,
     FormsModule,
     AgGridModule.withComponents([])
-   
   ],
   providers: [
+    CurrencyPipe,
     DatePipe,
     DecimalPipe,
     {

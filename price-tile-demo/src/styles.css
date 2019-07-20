@@ -172,3 +172,18 @@ ag-grid-angular {
   height: 100vh;
   width: 100vw;
 }
+
+.rag-red {
+  color: red;
+}
+
+.rag-green {
+  color: green;
+}
+.ag-row-hover {
+   /* putting in !important so it overrides the theme's styling as it hovers the row also */
+   background-color: midnightblue;
+}
+/* .ag-column-hover {
+   background-color: orangered;
+}  */

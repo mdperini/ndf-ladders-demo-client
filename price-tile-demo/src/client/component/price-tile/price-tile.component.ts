@@ -4,7 +4,8 @@ import {
   Input,
   Output,
   EventEmitter,
-  OnChanges
+  OnChanges, 
+  OnDestroy
 } from '@angular/core';
 import { Subject, Subscription } from 'rxjs';
 import { PricingService } from 'src/client/services/pricing.service';
@@ -14,16 +15,16 @@ import { TransactionService } from 'src/client/services/transaction.service';
   selector: 'app-price-tile',
   templateUrl: './price-tile.component.html'
 })
-export class PriceTileComponent implements OnInit, OnChanges {
+export class PriceTileComponent implements OnInit, OnChanges, OnDestroy {
   @Input() symbol: string;
   @Output() ccySelected = new EventEmitter<any>();
   @Output() ccyRemove = new EventEmitter<any>();
-  subscription: Subscription;
+  priceSubscription: Subscription;
+  executionSubscription: Subscription;
 
   bidRate: any;
   termRate: any;
   amount = 10000;
-  statusBar = '';
 
   constructor(
     private pricingService: PricingService,
@@ -32,26 +33,38 @@ export class PriceTileComponent implements OnInit, OnChanges {
 
   ngOnInit() {}
 
+  ngOnDestroy() {
+    if (this.priceSubscription) {
+      this.priceSubscription.unsubscribe();
+    }
+
+    if (this.executionSubscription) {
+      this.executionSubscription.unsubscribe();
+    }
+  }
+
   ngOnChanges() {
-    console.log(`ngOnChanges ${this.symbol}`);
-    if (this.subscription) {
-      this.subscription.unsubscribe();
+    this.subscribeToLivePrices();
+  }
+
+  subscribeToLivePrices() {
+    if (this.priceSubscription) {
+      this.priceSubscription.unsubscribe();
       this.bidRate = null;
       this.termRate = null;
     }
 
-    this.subscription = this.pricingService
+    this.priceSubscription = this.pricingService
       .getLivePrices(this.symbol)
       .subscribe((x: any) => {
-       console.log(`x.symbol ${x.symbol} ${this.symbol}`); 
-        this.bidRate = x.bidRate.toFixed(5);
-        this.termRate = x.termRate.toFixed(5);
+       console.log(`x.symbol ${x.symbol} ${this.symbol}`);
+       this.bidRate = x.bidRate.toFixed(5);
+       this.termRate = x.termRate.toFixed(5);
       });
-     }
-
+  }
 
   postTransaction(side) {
-    const result = this.transactionService
+    this.executionSubscription = this.transactionService
       .postTransaction(this.symbol, side, this.amount)
       .subscribe(
         (res) => {
