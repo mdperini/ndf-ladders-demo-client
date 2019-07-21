@@ -218,3 +218,10 @@ hr {
   margin-top: 1em;
   margin-bottom: 1em;
 }
+
+.rag-symbol {
+  color: whitesmoke;
+  padding: 0;
+  word-spacing: -4px;
+  font-size: 110%;
+}

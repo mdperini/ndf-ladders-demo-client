@@ -1,6 +1,8 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { TransactionService } from 'src/client/services/transaction.service';
 import { CurrencyPipe, DatePipe, DecimalPipe } from '@angular/common';
+import { StringFormatter } from '../../common/string-formatter.pipe';
+
 import { ColDef } from 'ag-grid-community';
 import { Subscription } from 'rxjs';
 
@@ -47,7 +49,8 @@ export class TransactionGridComponent implements OnInit, OnDestroy {
     private transactionService: TransactionService,
     private dateFormatter: DatePipe,
     private numberFormatter: DecimalPipe,
-    private currencyPipe: CurrencyPipe) {
+    private currencyPipe: CurrencyPipe,
+    private stringFormatter: StringFormatter) {
   }
 
   ngOnInit() {
@@ -78,7 +81,12 @@ export class TransactionGridComponent implements OnInit, OnDestroy {
       const definition: ColDef = { minWidth: 120};
       definition.headerName = column.header;
       definition.field = column.name;
-      if (column.name === 'side') {
+      if (column.name === 'symbol') {
+        definition.valueFormatter =
+          (data) => this.stringFormatter.transform(data.value, 3, '/');
+        definition.cellClass = 'rag-symbol';
+      
+      } else if (column.name === 'side') {
         definition.cellClassRules = {
           'rag-green': 'x == "BUY"',
           'rag-red': 'x == "SELL"'
