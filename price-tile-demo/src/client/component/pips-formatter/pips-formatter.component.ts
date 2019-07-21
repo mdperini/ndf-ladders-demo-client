@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { StaticDataService } from 'src/client/services/static-data.service';
 
 @Component({
   selector: 'app-pips-formatter',
@@ -11,7 +12,7 @@ export class PipsFormatterComponent implements OnInit, OnChanges {
   prevPrice: number;
   marketDirection: string;
 
-  constructor() { }
+  constructor(private staticDataService: StaticDataService) { }
 
   ngOnInit() {
   }
@@ -24,21 +25,10 @@ export class PipsFormatterComponent implements OnInit, OnChanges {
   }
 
   getPriceSubString(price: number, ccyPair: any, part: number) {
-    if (!this.price || !this.ccyPair) {
-      // display dashes until data is received
-      return '--';
-    }
-
-    const strPrice = price.toString();
-
-    if (part === 1) {
-      return strPrice.substring(0, ccyPair.pipStartIdx);
-
-     } else if (part === 2) {
-      return strPrice.substring(ccyPair.pipStartIdx, ccyPair.pipStartIdx + ccyPair.pipLength);
-     }
-
-    return strPrice.substring(ccyPair.pipStartIdx + ccyPair.pipLength, strPrice.length);
+    return this.staticDataService.getPriceSubString(
+              price,
+              ccyPair,
+              part);
   }
 
   setMarketDirection(): string {

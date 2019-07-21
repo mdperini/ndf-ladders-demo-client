@@ -26,4 +26,23 @@ export class StaticDataService {
       }
     });
   }
+
+  getPriceSubString(price: number, ccyPair: any, part: number) {
+    if (!price || !ccyPair) {
+      // display dashes until data is received
+      return '--';
+    }
+
+    const strPrice = price.toString();
+
+    if (part === 1) {
+      return strPrice.substring(0, ccyPair.pipStartIdx);
+
+     } else if (part === 2) {
+      return strPrice.substring(ccyPair.pipStartIdx, ccyPair.pipStartIdx + ccyPair.pipLength);
+     }
+
+    return strPrice.substring(ccyPair.pipStartIdx + ccyPair.pipLength, strPrice.length);
+  }
+
 }
