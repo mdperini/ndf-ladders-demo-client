@@ -176,13 +176,12 @@ app-price-quote .price {
   color: blue;  
 }
 
-
 .close {
   cursor: pointer;
   padding: 4px;
   position: absolute;
   right: 1px;
-  top: 10px;
+  top: 6px;
   color: lightcoral;
 }
 
@@ -213,3 +212,9 @@ ag-grid-angular {
 /* .ag-column-hover {
    background-color: orangered;
 }  */
+
+hr {
+  border:solid blue 1px;
+  margin-top: 1em;
+  margin-bottom: 1em;
+}

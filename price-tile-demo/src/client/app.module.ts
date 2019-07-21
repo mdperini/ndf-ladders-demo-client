@@ -19,6 +19,7 @@ import { AgGridModule } from 'ag-grid-angular';
 import { DatePipe, DecimalPipe, CurrencyPipe } from '@angular/common';
 
 import { PricePipe } from './formatprice.pipe';
+import { PipsFormatterComponent } from './component/pips-formatter/pips-formatter.component';
 
 export function loadstaticData(staticDataService: StaticDataService) {
   return () => {
@@ -34,7 +35,8 @@ export function loadstaticData(staticDataService: StaticDataService) {
     PriceQuoteComponent,
     WorkspaceComponent,
     TransactionGridComponent,
-    PricePipe
+    PricePipe,
+    PipsFormatterComponent
   ],
   imports: [
     BrowserModule,

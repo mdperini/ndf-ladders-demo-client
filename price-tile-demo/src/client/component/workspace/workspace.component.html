@@ -1,12 +1,12 @@
 <div class="price-tiles">
-  <app-price-tile *ngFor="let priceTile of layoutConfig" 
-    [symbol]=priceTile.symbol class="price-tile"
-    (ccySelected)="onCcySelected(priceTile, $event)" 
-    (ccyRemove)="onCcyRemove(priceTile, $event)">
-  </app-price-tile>
-  <span class="add" (click)="onAdd($event)"><i class="fa fa-plus-circle fa-5x add-inner"></i></span>
+    <app-price-tile *ngFor="let priceTile of layoutConfig" 
+      [symbol]=priceTile.symbol class="price-tile"
+      (ccySelected)="onCcySelected(priceTile, $event)" 
+      (ccyRemove)="onCcyRemove(priceTile, $event)">
+    </app-price-tile>
+    <span class="add" (click)="onAdd($event)"><i class="fa fa-plus-circle fa-5x add-inner"></i></span>
 </div>
-
+<hr>
 <div class="blotter">
   <app-transaction-grid></app-transaction-grid>
 </div>

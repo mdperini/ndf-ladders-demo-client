@@ -1,13 +1,5 @@
 <div (click)="onClick($event)">
   <div class="side">{{display}}</div>
-  <div class="price">
-    <span class="price-tile-amount" [ngClass]="marketDirection"> {{getCurrentPrice('buy', 0, 4)}}</span>
-    <span class="price-tile-amount-tick" [ngClass]="marketDirection">
-      {{getCurrentPrice('buy', 4, 6)}}
-    </span>
-    <span  class="price-tile-amount" [ngClass]="marketDirection">
-      {{getCurrentPrice('buy', 6, 7)}}
-    </span>
-  </div>
-  <!-- <div class="price">{{price | formatPrice}}</div> -->
+  <app-pips-formatter [price]="price" 
+                      [ccyPair]="ccyPair" ></app-pips-formatter>
 </div>

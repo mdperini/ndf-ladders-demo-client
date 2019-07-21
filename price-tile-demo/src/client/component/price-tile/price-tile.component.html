@@ -11,7 +11,15 @@
          name="notional"
          value="amount">
   <div class="price-tile-quotes">
-    <app-price-quote (execute)="postTransaction($event)" [display]="'Join Bid'"  [side]="'Buy'" [price]="bidRate"></app-price-quote>
-    <app-price-quote (execute)="postTransaction($event)" [display]="'Pay Offer'" [side]="'Sell'" [price]=" termRate"></app-price-quote>
+    <app-price-quote (execute)="postTransaction($event)" 
+                     [display]="'Join Bid'"
+                     [symbol]="symbol"  
+                     [side]="'Buy'" 
+                     [price]="bidRate"></app-price-quote>
+    <app-price-quote (execute)="postTransaction($event)" 
+                     [display]="'Pay Offer'"
+                     [symbol]="symbol" 
+                     [side]="'Sell'" 
+                     [price]=" termRate"></app-price-quote>
   </div>
 </div>
