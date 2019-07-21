@@ -4,7 +4,7 @@ import {
   Input,
   Output,
   EventEmitter,
-  OnChanges, 
+  OnChanges,
   OnDestroy
 } from '@angular/core';
 import { Subscription } from 'rxjs';
