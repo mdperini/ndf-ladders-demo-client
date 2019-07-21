@@ -25,8 +25,8 @@ export class PipsFormatterComponent implements OnInit, OnChanges {
 
   getPriceSubString(price: number, ccyPair: any, part: number) {
     if (!this.price || !this.ccyPair) {
-      // display zero rate until data is received
-      return this.getDefaultPriceSubString(part);
+      // display dashes until data is received
+      return '--';
     }
 
     const strPrice = price.toString();
@@ -41,18 +41,6 @@ export class PipsFormatterComponent implements OnInit, OnChanges {
     return strPrice.substring(ccyPair.pipStartIdx + ccyPair.pipLength, strPrice.length);
   }
 
-  getDefaultPriceSubString(part: number): string {
-   // display zero rate until data is received
-   if (part === 1) {
-    return (0.0).toFixed(10).substring(0, 4);
-
-   } else if (part === 2) {
-    return (0.0).toFixed(10).substring(4, 6);
-   }
-
-   return (0.0).toFixed(10).substring(6, 7);
-  }
-
   setMarketDirection(): string {
     let direction = 'up';
 
@@ -62,6 +50,4 @@ export class PipsFormatterComponent implements OnInit, OnChanges {
 
     return direction;
   }
-
-
 }
