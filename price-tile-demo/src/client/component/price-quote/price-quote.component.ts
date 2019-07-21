@@ -12,6 +12,7 @@ export class PriceQuoteComponent implements OnInit, OnChanges {
   @Input() symbol: string;
 
   @Output() execute = new EventEmitter<string>();
+  marketDirection: string;
 
   ccyPair = {
     symbol: 'EURUSD',
@@ -35,6 +36,11 @@ export class PriceQuoteComponent implements OnInit, OnChanges {
           this.ccyPair = result;
         }
       });
+    }
+
+    if (changes && changes.price && changes.price.currentValue) {
+      this.marketDirection = this.staticDataService.setMarketDirection(this.price);
+      this.staticDataService.setPrice(this.price);
     }
   }
 

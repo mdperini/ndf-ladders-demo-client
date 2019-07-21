@@ -8,6 +8,8 @@ import { environment } from '../../environments/environment';
 export class StaticDataService {
   readonly serverUrl = environment.serverUrl + '/currencypairs';
   ccyPairs: object;
+  price: number;
+  prevPrice: number;
 
   constructor(private http: HttpClient) {}
 
@@ -43,6 +45,20 @@ export class StaticDataService {
      }
 
     return strPrice.substring(ccyPair.pipStartIdx + ccyPair.pipLength, strPrice.length);
+  }
+
+  setMarketDirection(price: number): string {
+    let direction = 'up';
+
+    if (this.prevPrice && price) {
+      direction = (price >= this.prevPrice) ? 'up' : 'down';
+     }
+
+    return direction;
+  }
+
+  setPrice(price: number) {
+    this.price = price;
   }
 
 }

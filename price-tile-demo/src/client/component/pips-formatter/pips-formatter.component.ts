@@ -8,8 +8,6 @@ import { StaticDataService } from 'src/client/services/static-data.service';
 export class PipsFormatterComponent implements OnInit, OnChanges {
   @Input() ccyPair: any;
   @Input() price: number;
-
-  prevPrice: number;
   marketDirection: string;
 
   constructor(private staticDataService: StaticDataService) { }
@@ -19,8 +17,8 @@ export class PipsFormatterComponent implements OnInit, OnChanges {
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes && changes.price && changes.price.currentValue) {
-      this.marketDirection = this.setMarketDirection();
-      this.prevPrice = this.price;
+      this.marketDirection = this.staticDataService.setMarketDirection(this.price);
+      this.staticDataService.setPrice(this.price);
     }
   }
 
@@ -29,15 +27,5 @@ export class PipsFormatterComponent implements OnInit, OnChanges {
               price,
               ccyPair,
               part);
-  }
-
-  setMarketDirection(): string {
-    let direction = 'up';
-
-    if (this.prevPrice && this.price) {
-      direction = (this.price >= this.prevPrice) ? 'up' : 'down';
-     }
-
-    return direction;
-  }
+  } 
 }

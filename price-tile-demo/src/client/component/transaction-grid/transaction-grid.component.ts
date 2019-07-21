@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { TransactionService } from 'src/client/services/transaction.service';
 import { CurrencyPipe, DatePipe, DecimalPipe } from '@angular/common';
-import { StringFormatter } from '../../common/string-formatter.pipe';
+import { StringFormatter } from '../pipes/string-formatter.pipe';
 
 import { ColDef } from 'ag-grid-community';
 import { Subscription } from 'rxjs';
