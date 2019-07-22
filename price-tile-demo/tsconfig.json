@@ -8,6 +8,11 @@
     "module": "es2015",
     "moduleResolution": "node",
     "emitDecoratorMetadata": true,
+    "paths": {
+      "au-input": [
+        "./src/lib"
+      ]
+    },
     "experimentalDecorators": true,
     "importHelpers": true,
     "target": "es5",
@@ -18,5 +23,11 @@
       "es2018",
       "dom"
     ]
-  }
+  },
+  "files": [
+    "./src/main.ts",
+    "./src/polyfills.ts",
+    "./src/lib/index.ts",
+    "./src/lib/typings.d.ts"
+  ],
 }

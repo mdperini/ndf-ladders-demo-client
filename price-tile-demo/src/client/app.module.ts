@@ -14,6 +14,8 @@ import { TokenInterceptor } from './services/interceptor';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { StaticDataService } from './services/static-data.service';
 
+import { AuInputModule } from 'au-input';
+
 import { AgGridModule } from 'ag-grid-angular';
 
 import { DatePipe, DecimalPipe, CurrencyPipe } from '@angular/common';
@@ -41,6 +43,7 @@ export function loadstaticData(staticDataService: StaticDataService) {
   ],
   imports: [
     BrowserModule,
+    AuInputModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
