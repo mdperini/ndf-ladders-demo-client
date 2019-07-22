@@ -1,10 +1,10 @@
 <div class="price">
-  <span class="price-tile-amount" [ngClass]="marketDirection"> 
+  <span class="price-tile-pips-sm"> 
     {{getPriceSubString(price, ccyPair, 1)}}</span>
-  <span class="price-tile-amount-tick" [ngClass]="marketDirection">
+  <span class="price-tile-pips-lg" [ngClass]="marketDirection">
     {{getPriceSubString(price, ccyPair, 2)}}
   </span>
-  <span  class="price-tile-amount" [ngClass]="marketDirection">
+  <span  class="price-tile-pips-sm">
     {{getPriceSubString(price, ccyPair, 3)}}
   </span>
   </div>

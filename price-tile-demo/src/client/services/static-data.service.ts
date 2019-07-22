@@ -58,6 +58,7 @@ export class StaticDataService {
   }
 
   setPrice(price: number) {
+    this.prevPrice = this.price;
     this.price = price;
   }
 

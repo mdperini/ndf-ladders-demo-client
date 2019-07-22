@@ -161,6 +161,8 @@ app-price-quote:hover {
 
 app-price-quote .price {
   display: inline;
+  word-spacing: -10px;
+ 
 }
 
 .add {
