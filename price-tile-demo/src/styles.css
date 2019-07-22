@@ -47,7 +47,7 @@ select {
 body {
   --odd-row-background-color: #CFD8DC;
   background: #000000;
-  color: white;
+  color: #DDDDDD;
   font-family: Arial, Helvetica, blottersans-serif;
 }
 
@@ -92,7 +92,6 @@ span {
 }
 
 app-price-quote {
-  color: #DCDCDC;
   font-size: 76%;
   width: 144px;
 }
@@ -100,7 +99,7 @@ app-price-quote {
 select {
   margin-bottom: 5px;
   background: #000000;
-  color: white;
+  color: #ffffff;
   border: solid #696969 1px;
 }
 
@@ -111,17 +110,18 @@ select {
 .notional {
   text-align: right;
   background: #000000;
-  color: #DCDCDC;
+  color: #DDDDDD;
   width: calc(100% - 2px);
   margin-bottom: 5px;
   font-size: 100%;
   font-weight: 600;
   border: solid #696969 1px;
+  letter-spacing: 1px;
 }
 
 .currency-picker {
   cursor: pointer;
-  width: calc(100% - 50px);
+  width: calc(40%);
 }
 
 .currency-picker:hover {
@@ -153,10 +153,10 @@ app-price-quote {
   text-align: center;
 }
 
-
 app-price-quote:hover {
   border: solid blue 1px;
   background: linear-gradient(black, blue);
+  cursor: url(./assets/Target.cur), auto;
 }
 
 app-price-quote .price {

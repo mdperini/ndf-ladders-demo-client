@@ -85,7 +85,6 @@ export class TransactionGridComponent implements OnInit, OnDestroy {
         definition.valueFormatter =
           (data) => this.stringFormatter.transform(data.value, 3, '/');
         definition.cellClass = 'rag-symbol';
-      
       } else if (column.name === 'side') {
         definition.cellClassRules = {
           'rag-green': 'x == "BUY"',
