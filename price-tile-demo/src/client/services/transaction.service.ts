@@ -15,7 +15,7 @@ export class TransactionService {
     this.executedOrder = new Subject();
   }
 
-  getOrderSubject(): Subject<boolean> {
+  getOrderExecutedSubject(): Subject<boolean> {
     return this.executedOrder;
   }
 

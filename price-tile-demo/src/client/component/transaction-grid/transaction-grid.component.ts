@@ -12,14 +12,16 @@ import { Subscription } from 'rxjs';
 })
 export class TransactionGridComponent implements OnInit, OnDestroy {
   columnDefs: ColDef[];
-  defaultColDef: any;
+ defaultColDef: any;
   refreshSubscription: Subscription;
 
   rowData: any;
+
   columnDefinitions = [
     {
       header: 'Symbol',
       name: 'symbol',
+      valueFormatter: (data) => this.stringFormatter.transform(data.value, 3, '/')
     },
     {
       header: 'Type',
@@ -27,22 +29,31 @@ export class TransactionGridComponent implements OnInit, OnDestroy {
     },
     {
       header: 'Side',
-      name: 'side'
+      name: 'side',
+      cellClassRules: {
+                       'rag-green': 'x == "BUY"',
+                       'rag-red': 'x == "SELL"'
+                      }
     },
     {
       header: 'Notional',
       name: 'amount',
-      type: 'currency'
+      type: 'currency',
+      valueFormatter: (data) => this.currencyPipe.transform(data.value )
     },
     {
       header: 'Rate',
       name: 'rate',
-      type: 'price'
+      type: 'price',
+      valueFormatter:(data) => this.numberFormatter.transform(data.value, '1.2-5')
     },
     {
       header: 'Transaction',
       name: 'date',
-      type: 'date'
+      type: 'date',
+      valueFormatter: (data) => this.dateFormatter.transform(data.value, 'MMM dd yyyy hh:mm:ss'),
+      sort: 'desc'
+
     }];
 
   constructor(
@@ -54,12 +65,12 @@ export class TransactionGridComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.setColumns(this.columnDefinitions);
+    this.applyColumnDefinitions(this.columnDefinitions);
     this.getTransactions();
-    this.refreshSubscription = this.transactionService.getOrderSubject()
-    .subscribe(() => {
-      this.getTransactions();
-    });
+    this.refreshSubscription = this.transactionService.getOrderExecutedSubject()
+                                                      .subscribe(() => {
+                                                        this.getTransactions();
+                                                      });
   }
 
   ngOnDestroy() {
@@ -69,47 +80,44 @@ export class TransactionGridComponent implements OnInit, OnDestroy {
   }
 
   private getTransactions() {
-    this.transactionService.getTransactions().then((result: any) => {
-      this.rowData = result;
-    });
+    this.transactionService.getTransactions()
+                           .then((result: any) => {
+                              this.rowData = result;
+                            });
   }
 
-  setColumns(columns: any[]) {
+  applyColumnDefinitions(columnDefinitions: any[]) {
     this.columnDefs = [];
-    columns.forEach((column: any) => {
-      // const definition: ColDef = { headerName: column, field: column, minWidth: 120};
-      const definition: ColDef = { minWidth: 120};
-      definition.headerName = column.header;
-      definition.field = column.name;
-      if (column.name === 'symbol') {
-        definition.valueFormatter =
-          (data) => this.stringFormatter.transform(data.value, 3, '/');
-        definition.cellClass = 'rag-symbol';
-      } else if (column.name === 'side') {
-        definition.cellClassRules = {
-          'rag-green': 'x == "BUY"',
-          'rag-red': 'x == "SELL"'
-        };
-      } else  if (column.type === 'date') {
-        definition.valueFormatter = (data) =>
-        this.dateFormatter.transform(data.value, 'MMM dd yyyy hh:mm:ss');
-        definition.sort = 'desc';
-      } else if (column.type === 'currency') {
-        definition.valueFormatter =
-          (data) => this.currencyPipe.transform(data.value );
-      } else if (column.type === 'price') {
-       definition.valueFormatter =
-          (data) => this.numberFormatter.transform(data.value, '1.2-5');
-      }
-      this.columnDefs.push(definition);
-      this.defaultColDef =  {
-        // all columns sortable
-        sortable: true,
-        // all columns resizable
-        resizable: true,
+    columnDefinitions.forEach((columnDefinition: any) => {
+      const definition: ColDef = {};
+      definition.headerName = columnDefinition.header;
+      definition.field = columnDefinition.name;
 
-        rowSelection: 'single'
-      };
+      if (columnDefinition.valueFormatter) {
+        definition.valueFormatter = columnDefinition.valueFormatter;
+      }
+
+      if (columnDefinition.cellClassRules) {
+        definition.cellClassRules = columnDefinition.cellClassRules;
+      }
+
+      if (columnDefinition.sort) {
+        definition.sort = columnDefinition.sort;
+      }
+
+      this.columnDefs.push(definition);
     });
+
+
+    this.defaultColDef =  {
+      // all columns sortable
+      sortable: true,
+      // all columns resizable
+      resizable: true,
+
+      rowSelection: 'single',
+
+      minWidth: 120
+    };
   }
 }
