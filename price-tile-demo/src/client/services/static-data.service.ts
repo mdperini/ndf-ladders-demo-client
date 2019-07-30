@@ -52,7 +52,7 @@ export class StaticDataService {
      return  (price >= this.prevPrice) ? 'up' : 'down';
     }
 
-    return 'up';
+    return '';
   }
 
   setPrice(price: number) {
