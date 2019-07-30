@@ -48,13 +48,11 @@ export class StaticDataService {
   }
 
   setMarketDirection(price: number): string {
-    let direction = 'up';
-
     if (this.prevPrice && price) {
-      direction = (price >= this.prevPrice) ? 'up' : 'down';
-     }
+     return  (price >= this.prevPrice) ? 'up' : 'down';
+    }
 
-    return direction;
+    return 'up';
   }
 
   setPrice(price: number) {

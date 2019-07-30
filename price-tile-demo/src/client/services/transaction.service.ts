@@ -42,7 +42,7 @@ export class TransactionService {
       amount
     };
 
-    console.log(`http post ${JSON.stringify(payload)}`);
+    // console.log(`http post ${JSON.stringify(payload)}`);
 
     return this.http.post(this.serverUrl, JSON.stringify(payload));
   }

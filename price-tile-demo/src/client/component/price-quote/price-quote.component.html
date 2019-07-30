@@ -1,8 +1,9 @@
 <div (click)="onClick($event)">
   <div class="side">{{display}}</div>
-  <!-- <div [ngClass]="marketDirection" >
+  <div [ngClass]="marketDirection" >
     <div [innerHTML]="price | pipsFormatter: ccyPair"></div>
-  </div> -->
-  <app-pips-formatter [price]="price" 
-                      [ccyPair]="ccyPair" ></app-pips-formatter>
+  </div>
+  <!-- <app-pips-formatter [price]="price" 
+                      [ccyPair]="ccyPair" 
+                      [ngClass]="marketDirection"></app-pips-formatter> -->
 </div>

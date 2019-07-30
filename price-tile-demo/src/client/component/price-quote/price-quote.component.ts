@@ -40,6 +40,7 @@ export class PriceQuoteComponent implements OnInit, OnChanges {
 
     if (changes && changes.price && changes.price.currentValue) {
       this.marketDirection = this.staticDataService.setMarketDirection(this.price);
+      // console.log(`marketDirection ${this.marketDirection}`);
       this.staticDataService.setPrice(this.price);
     }
   }
