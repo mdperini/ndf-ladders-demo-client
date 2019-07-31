@@ -45,10 +45,14 @@ select {
 }
 
 body {
+  height: 100%;
+  width: 100%;
+  
   --odd-row-background-color: #CFD8DC;
   background: #000000;
   color: #DDDDDD;
-  font-family: Arial, Helvetica, blottersans-serif;
+  font-family: 'Roboto', sans-serif;
+  /* font-family: Arial, Helvetica, blottersans-serif; */
 }
 
 .price-tile {
@@ -226,5 +230,11 @@ hr {
   color: whitesmoke;
   padding: 0;
   word-spacing: -4px;
+  font-size: 110%;
+}
+
+
+
+.ag-column-hover {
   font-size: 110%;
 }

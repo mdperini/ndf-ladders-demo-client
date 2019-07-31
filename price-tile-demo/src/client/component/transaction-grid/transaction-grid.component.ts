@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { TransactionService } from 'src/client/services/transaction.service';
 import { CurrencyPipe, DatePipe, DecimalPipe } from '@angular/common';
 import { StringFormatter } from '../pipes/string-formatter.pipe';
+import { NumericFormatter } from '../pipes/number-formatter.pipe';
 
 import { ColDef } from 'ag-grid-community';
 import { Subscription } from 'rxjs';
@@ -12,7 +13,8 @@ import { Subscription } from 'rxjs';
 })
 export class TransactionGridComponent implements OnInit, OnDestroy {
   columnDefs: ColDef[];
- defaultColDef: any;
+  defaultColDef: any;
+  gridOptions: any;
   refreshSubscription: Subscription;
 
   rowData: any;
@@ -39,13 +41,13 @@ export class TransactionGridComponent implements OnInit, OnDestroy {
       header: 'Notional',
       name: 'amount',
       type: 'currency',
-      valueFormatter: (data) => this.currencyPipe.transform(data.value )
+      valueFormatter: (data) => this.numericFormatter.transform(data.value)
     },
     {
       header: 'Rate',
       name: 'rate',
       type: 'price',
-      valueFormatter:(data) => this.numberFormatter.transform(data.value, '1.2-5')
+      valueFormatter: (data) => this.decimalPipe.transform(data.value, '1.2-5')
     },
     {
       header: 'Transaction',
@@ -59,7 +61,8 @@ export class TransactionGridComponent implements OnInit, OnDestroy {
   constructor(
     private transactionService: TransactionService,
     private dateFormatter: DatePipe,
-    private numberFormatter: DecimalPipe,
+    private decimalPipe: DecimalPipe,
+    private numericFormatter: NumericFormatter,
     private currencyPipe: CurrencyPipe,
     private stringFormatter: StringFormatter) {
   }
@@ -118,6 +121,11 @@ export class TransactionGridComponent implements OnInit, OnDestroy {
       rowSelection: 'single',
 
       minWidth: 120
+    };
+
+    this.gridOptions = {
+      /* Label columns */
+      headerHeight: 20
     };
   }
 }
