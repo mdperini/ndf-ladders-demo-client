@@ -4,6 +4,14 @@
 /* @import "../node_modules/ag-grid-community/src/styles/ag-grid.scss"; */
 /* @import "../node_modules/ag-grid-community/src/styles/ag-theme-balham/sass/ag-theme-balham.scss"; */
 
+body {
+  --odd-row-background-color: #CFD8DC;
+  background: #000000;
+  color: #DDDDDD;
+  /* font-family: Arial, Helvetica, blottersans-serif; */
+  font-family: 'Roboto', sans-serif
+}
+
 .navbar-header {
   float: left;
 }
@@ -44,17 +52,6 @@ select {
   font-weight: 600;
 }
 
-body {
-  height: 100%;
-  width: 100%;
-  
-  --odd-row-background-color: #CFD8DC;
-  background: #000000;
-  color: #DDDDDD;
-  font-family: 'Roboto', sans-serif;
-  /* font-family: Arial, Helvetica, blottersans-serif; */
-}
-
 .price-tile {
   border: solid blue 1px;
   padding: 5px;
@@ -86,7 +83,7 @@ span {
 
 .price-tiles {
   display: flex;
- /* or inline-flex */
+/* or inline-flex */
   flex-wrap: wrap;
 }
 
@@ -104,7 +101,7 @@ select {
   margin-bottom: 5px;
   background: #000000;
   color: #ffffff;
-  border: solid #696969 1px;
+ border: solid #696969 1px;
 }
 
 .price-tile {
@@ -166,7 +163,7 @@ app-price-quote:hover {
 app-price-quote .price {
   display: inline;
   word-spacing: -10px;
- 
+
 }
 
 .add {
@@ -201,7 +198,63 @@ app-price-quote .price {
 
 ag-grid-angular {
   height: 100vh;
-  width: 100vw;
+  width: calc(100vw)
+}
+.ag-body {
+  height: 100%;
+}
+
+.ag-body-container {
+  width: 100%;
+}
+.ag-body-container:blotter-cell-leftPad {
+    padding-left: 5px;  
+}
+
+.ag-header-cell {
+  color: #a3a3a3;
+  font-family: 'roboto';
+  font-weight: 300;
+  padding-top: 5px;
+  margin: -6px;
+  text-align: center;
+}
+
+.ag-header-cell:first-child {
+    padding-left: 5px;
+}
+
+.ag-row {
+  border-top: 1px solid rgba(75, 75, 75, .2);
+  -webkit-background-clip: padding-box; /* for Safari */
+  background-clip: padding-box; /* for IE9+, Firefox 4+, Opera, Chrome */
+  box-shadow: inset 0 1px 0 black;
+}
+
+.ag-row-selected {
+  background-color: rgba(13, 189, 255, 0.65);
+  border-color: #0dbdff;
+  box-shadow: none;
+}
+.ag-row:hover {
+  border-color: #0dbdff;
+  box-shadow: none;
+}
+
+.ag-row:last-of-type {
+  border-bottom: 1px solid  #4a4a4a;
+}
+.ag-row:last-of-type:hover {
+  border-color:  #0dbdff !important;
+}
+
+.ag-cell {
+  line-height: 20px;
+  padding-top: 6px;
+  font-family: 'Roboto', sans-serif 
+}
+.ag-cell:focus {
+    outline-color: transparent;  
 }
 
 .rag-red {
@@ -211,14 +264,6 @@ ag-grid-angular {
 .rag-green {
   color: green;
 }
-.ag-row-hover {
-   /* putting in !important so it overrides the theme's styling as it hovers the row also */
-   background-color: blue;
-   color: yellow Important!;
-}
-/* .ag-column-hover {
-   background-color: orangered;
-}  */
 
 hr {
   border:solid blue 1px;
@@ -233,8 +278,20 @@ hr {
   font-size: 110%;
 }
 
-
-
-.ag-column-hover {
-  font-size: 110%;
+/* width */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }
