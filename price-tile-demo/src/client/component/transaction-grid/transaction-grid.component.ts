@@ -59,6 +59,14 @@ export class TransactionGridComponent implements OnInit, OnDestroy {
         definition.cellClassRules = columnDefinition.cellClassRules;
       }
 
+      if (columnDefinition.cellClass) {
+        definition.cellClass = columnDefinition.cellClass;
+      }
+
+      if (columnDefinition.filter) {
+        definition.filter = columnDefinition.filter;
+      }
+
       if (columnDefinition.sort) {
         definition.sort = columnDefinition.sort;
       }
@@ -67,6 +75,8 @@ export class TransactionGridComponent implements OnInit, OnDestroy {
     });
 
     this.defaultColDef =  {
+      // set filtering on for all cols
+      filter: true,
       // all columns sortable
       sortable: true,
       // all columns resizable

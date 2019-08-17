@@ -12,7 +12,9 @@ export class GridService {
     {
       header: 'Symbol',
       name: 'symbol',
-      valueFormatter: (data) => this.stringFormatter.transform(data.value, 3, '/')
+      valueFormatter: (data) => this.stringFormatter.transform(data.value, 3, '/'),
+      cellClass: 'ag-symbol',
+      filter: true
     },
     {
       header: 'Type',
@@ -21,32 +23,36 @@ export class GridService {
     {
       header: 'Side',
       name: 'side',
+      cellClass: 'ag-side',
       cellClassRules: {
                        'rag-green': 'x == "BUY"',
                        'rag-red': 'x == "SELL"'
                       },
                       hide: true,
-                      suppressToolPanel: true
+                      suppressToolPanel: true,
+                      filter: true
     },
     {
       header: 'Notional',
       name: 'amount',
       type: 'currency',
-      valueFormatter: (data) => this.numericFormatter.transform(data.value)
+      valueFormatter: (data) => this.numericFormatter.transform(data.value),
+      filter: true
     },
     {
       header: 'Rate',
       name: 'rate',
       type: 'price',
-      valueFormatter: (data) => this.numberFormatter.transform(data.value )
+      valueFormatter: (data) => this.numberFormatter.transform(data.value ),
+      filter: true
     },
     {
       header: 'Transaction',
       name: 'date',
       type: 'date',
       valueFormatter: (data) => this.dateFormatter.transform(data.value, 'MMM dd yyyy hh:mm:ss'),
-      sort: 'desc'
-
+      sort: 'desc',
+      filter: true
     }];
 
   constructor(private dateFormatter: DatePipe,
