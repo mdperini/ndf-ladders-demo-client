@@ -1,10 +1,7 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
 import { TransactionService } from 'src/client/services/transaction.service';
-import { CurrencyPipe, DatePipe, DecimalPipe } from '@angular/common';
-import { StringFormatter } from '../pipes/string-formatter.pipe';
-import { NumericFormatter } from '../pipes/number-formatter.pipe';
-
-import { ColDef } from 'ag-grid-community';
+import { GridService } from 'src/client/services/grid.service';
+import { ColDef, GridOptions } from 'ag-grid-community';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -12,63 +9,21 @@ import { Subscription } from 'rxjs';
   templateUrl: './transaction-grid.component.html'
 })
 export class TransactionGridComponent implements OnInit, OnDestroy {
+  @ViewChild('vcAgGridAngular') vcAgAridAngular: any;
   columnDefs: ColDef[];
   defaultColDef: any;
-  gridOptions: any;
+  gridOptions: GridOptions;
   refreshSubscription: Subscription;
-
   rowData: any;
 
-  columnDefinitions = [
-    {
-      header: 'Symbol',
-      name: 'symbol',
-      valueFormatter: (data) => this.stringFormatter.transform(data.value, 3, '/')
-    },
-    {
-      header: 'Type',
-      name: 'priceType'
-    },
-    {
-      header: 'Side',
-      name: 'side',
-      cellClassRules: {
-                       'rag-green': 'x == "BUY"',
-                       'rag-red': 'x == "SELL"'
-                      }
-    },
-    {
-      header: 'Notional',
-      name: 'amount',
-      type: 'currency',
-      valueFormatter: (data) => this.numericFormatter.transform(data.value)
-    },
-    {
-      header: 'Rate',
-      name: 'rate',
-      type: 'price',
-      valueFormatter: (data) => this.decimalPipe.transform(data.value, '1.2-5')
-    },
-    {
-      header: 'Transaction',
-      name: 'date',
-      type: 'date',
-      valueFormatter: (data) => this.dateFormatter.transform(data.value, 'MMM dd yyyy hh:mm:ss'),
-      sort: 'desc'
-
-    }];
-
   constructor(
-    private transactionService: TransactionService,
-    private dateFormatter: DatePipe,
-    private decimalPipe: DecimalPipe,
-    private numericFormatter: NumericFormatter,
-    private currencyPipe: CurrencyPipe,
-    private stringFormatter: StringFormatter) {
+    private gridService: GridService,
+    private transactionService: TransactionService) {
   }
 
   ngOnInit() {
-    this.applyColumnDefinitions(this.columnDefinitions);
+
+    this.applyColumnDefinitions(this.gridService.getColumnDefinitions());
     this.getTransactions();
     this.refreshSubscription = this.transactionService.getOrderExecutedSubject()
                                                       .subscribe(() => {
@@ -111,7 +66,6 @@ export class TransactionGridComponent implements OnInit, OnDestroy {
       this.columnDefs.push(definition);
     });
 
-
     this.defaultColDef =  {
       // all columns sortable
       sortable: true,
@@ -122,10 +76,52 @@ export class TransactionGridComponent implements OnInit, OnDestroy {
 
       minWidth: 120
     };
+  }
 
+  private setUpGrid() {
     this.gridOptions = {
-      /* Label columns */
-      headerHeight: 20
+      // components: {
+      //   loadingRenderer: function (params) {
+      //     if (params.value !== undefined) {
+      //       return params.value;
+      //     } else {
+      //       return 'Loading...'
+      //     }
+      //   }
+
+      // },
+      enableColResize: true,
+      rowBuffer: 0,
+      // debug: this.debug,
+      groupUseEntireRow: true,
+      rowSelection: 'single',
+      rowDeselection: true,
+      // columnDefs: this.ColumnDef,
+      rowModelType: 'infinite',
+      paginationPageSize: 100,
+      cacheOverflowSize: 2,
+      maxConcurrentDatasourceRequests: 2,
+      infiniteInitialRowCount: 1,
+      maxBlocksInCache: 2,
+      rowHeight: 30,
+      headerHeight: 30,
+      defaultColDef: {
+        editable: false
+      },
+      onGridReady: () => {
+        this.gridOptions.columnApi.setColumnVisible('side', true);
+        this.gridOptions.columnApi.setColumnVisible('Side', true);
+        // this.subscribeToBlotterData();
+        // this.subscribeToLayoutConfig();
+        // this.filterStateService.initFilters(this.filterTopic);
+        // if (this.gridEvents) {
+        //   this.gridEvents.emit(BlotterGridEvents.GridReady)
+        // }
+      },
+      // onDragStopped: (e: DragStoppedEvent) => {
+      //   this.handleColumnMoved(e);
+      // }
     };
   }
 }
+
