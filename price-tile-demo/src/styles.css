@@ -217,7 +217,9 @@ ag-grid-angular {
 
 .ag-header-cell {
   color: #a3a3a3;
-  font-family: 'interstate-bold';
+  font-family: 'Roboto', sans-serif;
+  font-size: 90%;
+  font-weight: 400;
   padding-top: 5px;  
 }
 
