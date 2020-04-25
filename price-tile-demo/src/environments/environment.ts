@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  serverUrl: 'http://localhost:3333',
-  webSocketUrl: 'ws://localhost:3333'
+  serverUrl: 'http://localhost:3383',
+  webSocketUrl: 'ws://localhost:3383'
 };
 
 /*
