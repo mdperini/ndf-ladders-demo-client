@@ -34,11 +34,9 @@
   <ul>
     <li *ngFor="let rung of rungs">
 <hr>
+      <div class="flex-column"
+      >
       <ladder-tenor [tenor]="rung.nearTenor" [tenorDate]="rung.nearTenorDate"></ladder-tenor>
-      <!-- <div>
-        <span>{{rung.nearTenor}}</span>
-        <span>{{rung.nearTenorDate | date : 'MMM dd' }}</span>
-      </div> -->
       <ladder-quote
         [liquidity]="rung.bidLiquidity"
         [points]="rung.bidPoints"
@@ -50,7 +48,12 @@
         [allInPoints]="rung.askAllInPoints">
       </ladder-quote>
       <ladder-tenor [tenor]="rung.farTenor" [tenorDate]="rung.farTenorDate"></ladder-tenor>
-    <!-- <div>
+    </div>
+      <!-- <div>
+        <span>{{rung.nearTenor}}</span>
+        <span>{{rung.nearTenorDate | date : 'MMM dd' }}</span>
+      </div> -->
+     <!-- <div>
         <span>{{rung.bidLiquidity}}</span>
         <span>{{rung.bidPoints.toFixed(5) }}</span>
         <span>{{rung.bidAllInPoints.toFixed(5)}}</span>

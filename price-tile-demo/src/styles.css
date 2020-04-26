@@ -96,6 +96,11 @@ list-style-type: none;
   color: green;
 }
 
+.flex-row {
+  display: flex;
+  flex-direction: column;
+}
+
 .price-tiles {
   display: flex;
 /* or inline-flex */
