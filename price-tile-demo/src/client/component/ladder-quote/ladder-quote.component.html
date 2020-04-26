@@ -1,5 +1,6 @@
 <div class="flex-row">
-  <span>{{ liquidity }}</span>
-  <span>{{ points }}</span>
-  <span>{{ allInPoints }}</span>
+  <span class="liquidity" *ngIf="liquidity !== 0">{{ liquidity }}</span>
+  <span class="points"  *ngIf="points !== 0">{{ (points/100).toFixed(2) }}</span>
+  <span class="rfs" *ngIf="points === 0">RFS</span>
+  <span class="all-in" *ngIf="points !== 0">{{ allInPoints.toFixed(5) }}</span>
 </div>
