@@ -1,19 +1,22 @@
 <div class="navbar-header">
-  <app-currency-picker [symbol]="symbol" 
-      (ccySelected)="onSelected($event)">
-  </app-currency-picker>
-  <div class="bars">
-    <ul id="nav">
-      <li>
-        <i class="fa fa-bars"></i>           
-        <ul>
-          <li class="close">  
-            <div class="close" 
-            (click)="onRemove(symbol)"><i class="fa fa-close"></i></div>
-          </li>
-        </ul>
-      </li>                      
-    </ul>
+  <div>
+    <app-currency-picker [symbol]="symbol" 
+    (ccySelected)="onSelected($event)">
+</app-currency-picker>
+<div class="bars">
+  <ul id="nav">
+    <li>
+      <i class="fa fa-bars"></i>           
+      <ul>
+        <li class="close">  
+          <div class="close" 
+          (click)="onRemove(symbol)"><i class="fa fa-close"></i></div>
+        </li>
+      </ul>
+    </li>                      
+  </ul>
+</div>
+
   </div>
   <div class="price-tile-quotes">
     <app-price-quote (execute)="postTransaction($event)" 

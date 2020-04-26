@@ -9,30 +9,30 @@ body {
   --border-color: #00BDF0;
    --backgroundOne: #000000;
   --backgroundTwo: #111111;
-  background: var(--backgroundOne);
- 
-
-  
+  background: var(--backgroundOne); 
   color: #DDDDDD;
   /* color: #DDDDDD;
   font-family: Arial, Helvetica, blottersans-serif; */
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif, sans-serif;
- 
 }
-
 
 .navbar-header {
   float: none;
 }
 
+.flex-column {
+  display: flex;
+  justify-content: flex-start;
+}
+
 .velocity-icon {
-  float: left;
+  float: none;
   background-repeat: no-repeat;
 }
 
 .vi-chevron {
   margin-left: 1px;
-  margin-top: 6px;
+  margin-top: 1px;
   width: 17px;
   height: 11px;
 }
@@ -42,13 +42,14 @@ body {
   height: 11px;
   background-image: url("data:image/svg+xml;utf8, \
   <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 19'> \
-      <path fill='red' d='M 0.37,0 C0.37,0 13.83,0 13.83,0 13.83,0 30,9.57 30,9.57 30,9.57 13.60,19 13.60,19 13.60,19 0,19 0,19 0,19 16.01,9.50 16.01,9.50 16.01,9.50 0.37,0 0.37,0 z'/> \
+      <path fill='rgb(220,25,24)' d='M 0.37,0 C0.37,0 13.83,0 13.83,0 13.83,0 30,9.57 30,9.57 30,9.57 13.60,19 13.60,19 13.60,19 0,19 0,19 0,19 16.01,9.50 16.01,9.50 16.01,9.50 0.37,0 0.37,0 z'/> \
   </svg>");
 }
 
 .vi-chevron {
   width: 30px;
-  height: 20px;
+  height: 11px;
+  margin-top: 7px;
 }
 
 select {
@@ -127,7 +128,7 @@ select {
   background: #000000;
   color: #DDDDDD;
   width: calc(100% - 2px);
-  margin-bottom: 5px;
+  margin-top: 3px;
   font-size: 100%;
   font-weight: 600;
   border: solid #4A4A4A 1px;
@@ -136,9 +137,11 @@ select {
 
 .currency-picker {
   cursor: pointer;
-  width: calc(40%);
   border: transparent;
   outline: transparent;
+  font-size: 15px;
+  margin-top: -4px;
+  margin-left: -11px;
 }
 
 .currency-picker:hover {
