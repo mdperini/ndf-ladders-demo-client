@@ -59,7 +59,7 @@ export class PriceTileComponent implements OnInit, OnChanges, OnDestroy {
       .subscribe((x: any) => {
        this.bidRate = x.bidRate.toFixed(5);
        this.termRate = x.termRate.toFixed(5);
-      //  console.log(`quote ${x.symbol} ${this.symbol} ${this.bidRate} ${this.termRate} `);
+      console.log(`quote ${x.symbol} ${this.symbol} ${this.bidRate} ${this.termRate} `);
       });
   }
 
