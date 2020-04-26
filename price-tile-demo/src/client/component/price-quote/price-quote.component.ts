@@ -15,15 +15,15 @@ export class PriceQuoteComponent implements OnInit, OnChanges {
   marketDirection: string;
 
   ccyPair = {
-    symbol: 'EURUSD',
-    bid: 'EUR',
-    term: 'USD',
-    totalFractionalDigits: 5,
-    pipStartIdx: 4,
-    pipLength: 2,
-    basePrice: 1.1423
-  };
-
+      symbol: 'USDCNY',
+      bid: 'USD',
+      term: 'CNY',
+      totalFractionalDigits: 5,
+      pipStartIdx: 3,
+      pipLength: 2,
+      basePrice: 6.65880
+  }
+  
   constructor(private staticDataService: StaticDataService) {}
 
   ngOnInit() {}

@@ -6,17 +6,23 @@
 
 body {
   --odd-row-background-color: #CFD8DC;
-  background: #000000;
+  --border-color: #00BDF0;
+   --backgroundOne: #000000;
+  --backgroundTwo: #111111;
+  background: var(--backgroundOne);
+ 
+
+  
   color: #DDDDDD;
   /* color: #DDDDDD;
   font-family: Arial, Helvetica, blottersans-serif; */
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif, sans-serif;
  
 }
 
 
 .navbar-header {
-  float: left;
+  float: none;
 }
 
 .velocity-icon {
@@ -56,7 +62,7 @@ select {
 }
 
 .price-tile {
-  border: solid blue 1px;
+  border: solid 0.2px rgba(0, 189, 240, 0.7);
   padding: 5px;
   width: 300px;
   position: relative;
@@ -67,6 +73,7 @@ span {
 }
 
 .price-tile-pips-sm {
+  color: #ffffff;
   font-size: 16px;
   vertical-align: top;
 }
@@ -95,9 +102,13 @@ span {
   justify-content: space-between;
 }
 
+.left-side {
+  margin-right: 1px;
+}
+
 app-price-quote {
   font-size: 76%;
-  width: 144px;
+  width: 100%;
 }
 
 select {
@@ -119,17 +130,19 @@ select {
   margin-bottom: 5px;
   font-size: 100%;
   font-weight: 600;
-  border: solid #696969 1px;
+  border: solid #4A4A4A 1px;
   letter-spacing: 1px;
 }
 
 .currency-picker {
   cursor: pointer;
   width: calc(40%);
+  border: transparent;
+  outline: transparent;
 }
 
 .currency-picker:hover {
-  border: solid blue 1px;
+  border: (--border-color) 1px;
 }
 
 .notional {
@@ -137,7 +150,7 @@ select {
 }
 
 .notional:hover {
-  border: solid blue 1px;
+  border: solid var(--border-color) 1px;
 }
 
 .refresh {
@@ -146,20 +159,21 @@ select {
   text-align: left;
   letter-spacing: 10px;
   cursor: pointer;
-  border: solid blue 1px;
+  border: solid 0.2px var(--border-color) 1px;
   width: 100vw;
 }
 
 app-price-quote {
   cursor: pointer;
-  border: solid #696969 1px;
+  border: transparent;
+  background-color: var(--backgroundTwo);
   justify-content: space-between;
   text-align: center;
 }
 
 app-price-quote:hover {
-  border: solid blue 1px;
-  background: linear-gradient(black, blue);
+  border: solid var(--border-color) 0.2px;
+  background: linear-gradient(black, var(--border-color));
   cursor: url(./assets/Target.cur), auto;
 }
 
@@ -179,7 +193,7 @@ app-price-quote .price {
 }
 
 .add-inner:hover {
-  color: blue;  
+  color: var(--border-color);  
 }
 .bars {
   cursor: pointer;
@@ -205,7 +219,7 @@ app-price-quote .price {
 }
 
 .close:hover {
-  color:blue;
+  color:var(--border-color);
 }
 
 .blotter {
@@ -248,7 +262,7 @@ ag-grid-angular {
 }
 
 .ag-row-selected {
-  background-color: rgba(13, 189, 255, 0.65);
+  background-color: 0.2px rgba(13, 189, 255, 0.65);
   box-shadow:none;
 }
 .ag-row:hover {
@@ -290,7 +304,7 @@ ag-grid-angular {
 }
 
 hr {
-  border:solid blue 1px;
+  border:solid var(--border-color) 1px;
   margin-top: 1em;
   margin-bottom: 1em;
 }

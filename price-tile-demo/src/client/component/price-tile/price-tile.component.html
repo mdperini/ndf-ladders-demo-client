@@ -15,17 +15,9 @@
       </li>                      
     </ul>
   </div>
-  <!-- <au-fa-input icon="usd">
-        <input auInput type="number" name="notional" placeholder="Notional">
-  </au-fa-input> -->
-  <input class="notional" 
-         type="number" 
-         [(ngModel)]="amount" 
-         placeholder="notional" 
-         name="notional"
-         value="amount">
   <div class="price-tile-quotes">
     <app-price-quote (execute)="postTransaction($event)" 
+                     class="left-side"                 
                      [display]="'Join Bid'"
                      [symbol]="symbol"  
                      [side]="'Buy'" 
@@ -36,4 +28,10 @@
                      [side]="'Sell'" 
                      [price]=" termRate"></app-price-quote>
   </div>
+  <input class="notional" 
+    type="number" 
+    [(ngModel)]="amount" 
+    placeholder="notional" 
+    name="notional"
+    value="amount">
 </div>

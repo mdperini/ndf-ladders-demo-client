@@ -27,7 +27,7 @@ export class WorkspaceComponent implements OnInit {
 
   onAdd($Event) {
     this.layoutConfig.push({
-      symbol: 'EURUSD'
+      symbol: 'USDCNY'
     });
     this.savePreferences();
   }
