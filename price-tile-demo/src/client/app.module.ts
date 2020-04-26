@@ -24,6 +24,8 @@ import { NumericFormatter } from './component/pipes/number-formatter.pipe';
 import { StringFormatter } from './component/pipes/string-formatter.pipe';
 import { PipsFormatterPipe } from './component/pipes/formatprice.pipe';
 import { PipsFormatterComponent } from './component/pips-formatter/pips-formatter.component';
+import { LadderTenorComponent } from './component/ladder-tenor/ladder-tenor.component';
+import { LadderQuoteComponent } from './component/ladder-quote/ladder-quote.component';
 
 export function loadstaticData(staticDataService: StaticDataService) {
   return () => {
@@ -40,7 +42,9 @@ export function loadstaticData(staticDataService: StaticDataService) {
     WorkspaceComponent,
     TransactionGridComponent,
     PipsFormatterPipe,
-    PipsFormatterComponent
+    PipsFormatterComponent,
+    LadderTenorComponent,
+    LadderQuoteComponent
   ],
   imports: [
     BrowserModule,
