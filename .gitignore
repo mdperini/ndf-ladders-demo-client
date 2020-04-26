@@ -22,3 +22,66 @@ price-tile-demo/dist/price-tile-demo/vendor.js
 price-tile-demo/dist/price-tile-demo/vendor.js.map
 *.woff
 *.woff2
+node_modules
+node_modules
+node_modules
+*.icloud
+price-tile-demo/node_modules 2/.bin/uuid
+price-tile-demo/node_modules 2/.bin/webdriver-manager
+price-tile-demo/node_modules 2/.bin/webpack
+price-tile-demo/node_modules 2/.bin/webpack-dev-server
+price-tile-demo/node_modules 2/.bin/which
+price-tile-demo/node_modules 2/.bin/ts-node
+price-tile-demo/node_modules 2/.bin/tsc
+price-tile-demo/node_modules 2/.bin/tslint
+price-tile-demo/node_modules 2/.bin/tsserver
+price-tile-demo/node_modules 2/.bin/uglifyjs
+price-tile-demo/node_modules 2/.bin/z-schema
+price-tile-demo/node_modules 2/.bin/sshpk-conv
+price-tile-demo/node_modules 2/.bin/sshpk-sign
+price-tile-demo/node_modules 2/.bin/sshpk-verify
+price-tile-demo/node_modules 2/.bin/strip-indent
+price-tile-demo/node_modules 2/.bin/stylus
+price-tile-demo/node_modules 2/.bin/terser
+price-tile-demo/node_modules 2/.bin/tree-kill
+*.js
+price-tile-demo/node_modules 2/.bin/protractor
+price-tile-demo/node_modules 2/.bin/rc
+price-tile-demo/node_modules 2/.bin/regjsparser
+price-tile-demo/node_modules 2/.bin/rimraf
+price-tile-demo/node_modules 2/.bin/sassgraph
+price-tile-demo/node_modules 2/.bin/semver
+price-tile-demo/node_modules 2/.bin/shjs
+price-tile-demo/node_modules 2/.bin/node-gyp
+price-tile-demo/node_modules 2/.bin/node-pre-gyp
+price-tile-demo/node_modules 2/.bin/node-sass
+price-tile-demo/node_modules 2/.bin/nopt
+price-tile-demo/node_modules 2/.bin/not-in-install
+price-tile-demo/node_modules 2/.bin/not-in-publish
+price-tile-demo/node_modules 2/.bin/parser
+price-tile-demo/node_modules 2/.bin/mime
+price-tile-demo/node_modules 2/.bin/mkdirp
+price-tile-demo/node_modules 2/.bin/multicast-dns
+price-tile-demo/node_modules 2/.bin/needle
+price-tile-demo/node_modules 2/.bin/ng
+price-tile-demo/node_modules 2/.bin/ng-xi18n
+price-tile-demo/node_modules 2/.bin/ngc
+price-tile-demo/node_modules 2/.bin/jsesc
+price-tile-demo/node_modules 2/.bin/json5
+price-tile-demo/node_modules 2/.bin/JSONStream
+price-tile-demo/node_modules 2/.bin/karma
+price-tile-demo/node_modules 2/.bin/lessc
+price-tile-demo/node_modules 2/.bin/loose-envify
+price-tile-demo/node_modules 2/.bin/miller-rabin
+price-tile-demo/node_modules 2/.bin/image-size
+price-tile-demo/node_modules 2/.bin/import-local-fixture
+price-tile-demo/node_modules 2/.bin/in-install
+price-tile-demo/node_modules 2/.bin/in-publish
+price-tile-demo/node_modules 2/.bin/ivy-ngcc
+price-tile-demo/node_modules 2/.bin/jasmine
+price-tile-demo/node_modules 2/.bin/js-yaml
+price-tile-demo/node_modules 2/.bin/detect-libc
+price-tile-demo/node_modules 2/.bin/errno
+price-tile-demo/node_modules 2/.bin/esparse
+price-tile-demo/node_modules 2/.bin/esvalidate
+price-tile-demo/node_modules 2/.bin/handlebars

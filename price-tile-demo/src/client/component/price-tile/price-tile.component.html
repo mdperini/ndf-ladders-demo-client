@@ -31,6 +31,20 @@
                      [side]="'Sell'" 
                      [price]=" termRate"></app-price-quote>
   </div>
+  <ul>
+    <li *ngFor="let rung of rungs">
+      <span>{{rung.nearTenor}}</span>
+      <span>{{rung.nearTenorDate | date : 'MMM dd' }}</span>
+      <span>{{(rung.bidPoints).toFixed(5) }}</span>
+      <span>{{(rung.askPoints).toFixed(5)}}</span>
+      <span>{{rung.bidLiquidity}}</span>
+      <span>{{rung.askLiquidity}}</span>
+      <span>{{rung.bidAllInPoints.toFixed(5)}}</span>
+      <span>{{rung.askAllInPoints.toFixed(5)}}</span>
+      <span>{{rung.farTenor}}</span>
+      <span>{{rung.farTenorDate | date : 'MMM dd' }}</span>
+    </li>
+  </ul>
   <input class="notional" 
     type="number" 
     [(ngModel)]="amount" 
