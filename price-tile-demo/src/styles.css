@@ -112,6 +112,22 @@ list-style-type: none;
   justify-content: space-between;
 }
 
+.tenor-div {
+  height: 10px;
+  width: 70px;
+  color: #FFFFFF;
+  font-size: 12px;
+  letter-spacing: 0;
+  line-height: 13px;
+  text-align: center;
+}
+
+.fixing-date {
+  opacity: 0.5;
+  color: #FFFFFF;
+   font-size: 10px;
+ }
+
 .left-side {
   margin-right: 1px;
 }
