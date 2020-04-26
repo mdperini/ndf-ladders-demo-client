@@ -37,35 +37,20 @@
       >
       <ladder-tenor [tenor]="rung.nearTenor" [tenorDate]="rung.nearTenorDate"></ladder-tenor>
       <ladder-quote
+        [side]="'Buy'" 
         [liquidity]="rung.bidLiquidity"
         [points]="rung.bidPoints"
         [allInPoints]="rung.bidAllInPoints">
       </ladder-quote>
       <ladder-quote
+        [side]="'Sell'" 
         [liquidity]="rung.askLiquidity"
         [points]="rung.askPoints"
         [allInPoints]="rung.askAllInPoints">
       </ladder-quote>
       <ladder-tenor [tenor]="rung.farTenor" [tenorDate]="rung.farTenorDate"></ladder-tenor>
     </div>
-      <!-- <div>
-        <span>{{rung.nearTenor}}</span>
-        <span>{{rung.nearTenorDate | date : 'MMM dd' }}</span>
-      </div> -->
-     <!-- <div>
-        <span>{{rung.bidLiquidity}}</span>
-        <span>{{rung.bidPoints.toFixed(5) }}</span>
-        <span>{{rung.bidAllInPoints.toFixed(5)}}</span>
-      </div> -->
-      <!-- <div>
-        <span>{{rung.askLiquidity}}</span>
-        <span>{{rung.askPoints.toFixed(5)}}</span>
-        <span>{{rung.askAllInPoints.toFixed(5)}}</span>
-      </div> -->
-      <!-- <div>
-        <span>{{rung.farTenor}}</span>
-        <span>{{rung.farTenorDate | date : 'MMM dd' }}</span>
-      </div> -->
+    
     </li>
   </ul>
   <input class="notional" 

@@ -152,6 +152,14 @@ list-style-type: none;
     text-align: center;
  }
 
+ .float-right {
+  float: right;
+ }
+
+ .float-left {
+  float: left;
+ }
+
  .rfs {
   height: 40px;
   font-weight: bold;
