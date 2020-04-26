@@ -28,7 +28,7 @@ export class PricingService {
    
     this.connect().then(() => {
       const handler = (update, flags) => {
-        // console.log('getLivePrices', JSON.stringify(update));
+        console.log('getLivePrices', JSON.stringify(update));
         subject.next(update);
       };
       this.client.subscribe('/price/' + symbol, handler);
