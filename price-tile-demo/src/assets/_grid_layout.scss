@@ -1,0 +1,40 @@
+.container {
+    display: grid;
+    grid-template-columns: [col1-start] 68px [col1-end col2-start] 80px [col2-end col3-start] 80px [col3-end col4-start] 50px [col4-end];
+    grid-row: auto;
+    grid-template-areas: 
+    'content'
+    'footer';
+}
+
+.content {
+    grid-area: content;
+}
+
+.footer {
+    height: 20px;
+    width: 100%;
+    grid-area: footer;
+    background-color: #000000;
+    color: #ffffff;
+    grid-row-start: 2;
+    grid-row-end: 3;
+    display: flex;
+}
+
+.col1 {
+    grid-column: col1-start / col1-end;
+}
+
+.col2 {
+    grid-column: col2-start / col2-end;
+}
+
+.col3 {
+    grid-column: col3-start / col3-end;
+}
+
+.col3 {
+    grid-column: col4-start / col4-end;
+}
+
