@@ -107,19 +107,20 @@ body {
   }
   
   .tenor-div {
-    height: 10px;
+    height: 40px;
     width: 70px;
-    color: #FFFFFF;
     font-size: 12px;
     letter-spacing: 0;
     line-height: 13px;
     text-align: center;
+    &:hover {
+      background-color: rgba($color: #7f7f7f, $alpha: 0.3);
+    }
   }
   
   .fixing-date {
     opacity: 0.5;
-    color: #FFFFFF;
-     font-size: 10px;
+    font-size: 10px;
    }
   
    .liquidity {
@@ -156,6 +157,7 @@ body {
   
    .rfs {
     height: 40px;
+    width: 80px;
     font-weight: bold;
     font-size: 12px;
     letter-spacing: 0;

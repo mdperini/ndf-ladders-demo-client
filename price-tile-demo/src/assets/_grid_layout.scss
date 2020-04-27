@@ -1,7 +1,7 @@
 .container {
     display: grid;
     grid-template-columns: [col1-start] 68px [col1-end col2-start] 80px [col2-end col3-start] 80px [col3-end col4-start] 50px [col4-end];
-    grid-row: auto;
+    grid-template-rows: auto;
     grid-template-areas: 
     'content'
     'footer';
@@ -34,7 +34,7 @@
     grid-column: col3-start / col3-end;
 }
 
-.col3 {
+.col4 {
     grid-column: col4-start / col4-end;
 }
 

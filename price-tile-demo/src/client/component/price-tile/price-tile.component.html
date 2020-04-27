@@ -31,29 +31,32 @@
                      [side]="'Sell'" 
                      [price]=" termRate"></app-price-quote>
   </div>
-  <ul>
-    <li *ngFor="let rung of rungs">
-      <div class="flex-column"
-      >
-      <ladder-tenor [tenor]="rung.nearTenor" [tenorDate]="rung.nearTenorDate"></ladder-tenor>
-      <ladder-quote
-        [side]="'Buy'" 
-        [liquidity]="rung.bidLiquidity"
-        [points]="rung.bidPoints"
-        [allInPoints]="rung.bidAllInPoints">
-      </ladder-quote>
-      <ladder-quote
-        [side]="'Sell'" 
-        [liquidity]="rung.askLiquidity"
-        [points]="rung.askPoints"
-        [allInPoints]="rung.askAllInPoints">
-      </ladder-quote>
-      <ladder-tenor [tenor]="rung.farTenor" [tenorDate]="rung.farTenorDate"></ladder-tenor>
-    </div>
-    
-    </li>
-  </ul>
-  <input class="notional" 
+  <div>
+    <ul class="rungs">
+      <li class="container" *ngFor="let rung of rungs">
+        <div class="flex-column"
+        >
+        <ladder-tenor class="col1" [tenor]="rung.nearTenor" [tenorDate]="rung.nearTenorDate" [tenorFixingDate]="rung.nearTenorFixingDate"></ladder-tenor>
+        <ladder-quote class="col2"
+          [side]="'Buy'" 
+          [liquidity]="rung.bidLiquidity"
+          [points]="rung.bidPoints"
+          [allInPoints]="rung.bidAllInPoints">
+        </ladder-quote>
+        <ladder-quote  class="col3"
+          [side]="'Sell'" 
+          [liquidity]="rung.askLiquidity"
+          [points]="rung.askPoints"
+          [allInPoints]="rung.askAllInPoints">
+        </ladder-quote>
+        <ladder-tenor class="col4" [tenor]="rung.farTenor" [tenorDate]="rung.farTenorDate"></ladder-tenor>
+      </div>
+      
+      </li>
+    </ul>
+  </div>
+  
+  <input class="footer notional" 
     type="number" 
     [(ngModel)]="amount" 
     placeholder="notional" 
