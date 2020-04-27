@@ -1,0 +1,12 @@
+.btn {
+    height: 40px;
+    width: 80px;
+    background-color: inherit;
+    border: inherit;
+    &:hover {
+        border: solid orangered 1px;
+    }
+    &:focus {
+        outline: 0;
+    }
+}

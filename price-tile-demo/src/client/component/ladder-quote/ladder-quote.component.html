@@ -1,10 +1,10 @@
-<div class="flex-row">
-  <span class="liquidity"
+<button class="btn flex-row">
+  <div class="liquidity"
   [ngClass]="{
     'float-left':side === 'Buy',
     'float-right':side === 'Sell'
-  }" *ngIf="liquidity !== 0">{{ getformat(liquidity) }}</span>
-  <span class="points"  *ngIf="points !== 0">{{ (points/100).toFixed(2) }}</span>
-  <span class="rfs" *ngIf="points === 0">RFS</span>
-  <span class="all-in" *ngIf="points !== 0">{{ allInPoints.toFixed(5) }}</span>
-</div>
+  }" *ngIf="liquidity !== 0">{{ getformat(liquidity) }}</div>
+  <div class="points"  *ngIf="points !== 0">{{ (points/100).toFixed(2) }}</div>
+  <div class="rfs" *ngIf="points === 0">RFS</div>
+  <div class="all-in" *ngIf="points !== 0">{{ allInPoints.toFixed(5) }}</div>
+</button>
