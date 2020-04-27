@@ -106,6 +106,16 @@ body {
     justify-content: space-between;
   }
   
+  .column-header {
+    position: relative;
+    left: -5px;
+    width: 315px;
+    color: #7f7f7f;
+    font-weight: bold;
+    font-size: 11px;
+    letter-spacing: 0.4px;
+  }
+
   .tenor-div {
     height: 40px;
     width: 70px;
