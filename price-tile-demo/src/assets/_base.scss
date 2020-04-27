@@ -141,9 +141,9 @@ body {
     font-size: 10px;
    }
   
-   .liquidity {
+  .liquidity {
      position: relative;
-      background-color: #000000;
+       background-color: #000000;
       opacity: 0.8;
       color: #FFFFFF;
       font-size: 8px;
@@ -153,9 +153,9 @@ body {
    }
   
    .points {
-    position: relative;
-    background-color: #111111;
-      font-weight: bold;
+     position: relative;
+     width: inherit;
+     font-weight: bold;
       color: #01CD01;
       font-size: 15px;
       letter-spacing: 0;
@@ -165,15 +165,19 @@ body {
   
    .rfs {
     position: relative;
+    top: 5px;
+    width: inherit;
     color: #FFFFFF;
     font-weight: bold;
     font-size: 12px;
     letter-spacing: 0;
     line-height: 13px;
     text-align: center;
-  }
+ }
   
    .all-in {
+    height: inherit;
+    width: inherit;
     position: relative;
     background-color: #1E1E1E;
       color: #FFFFFF;
